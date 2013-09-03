@@ -1,0 +1,10 @@
+source 'http://rubygems.org'
+
+gem 'sinatra'
+gem 'shotgun'
+gem 'eventmachine'
+gem 'httparty'
+gem 'rspec'
+gem 'webmock'
+gem 'rack-test'
+gem 'sinatra-contrib'
