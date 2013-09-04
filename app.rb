@@ -1,6 +1,10 @@
 require 'sinatra'
 require 'sinatra/json'
 require 'httparty'
+require 'mongoid'
+
+Mongoid.load!('./mongoid.yml', :development)
+
 
 EWS_LABS = {
   "DCL L416"=> {"strlabname"=> "DCL L416","inusecount"=> 0,"machinecount"=> 26},

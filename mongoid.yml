@@ -1,0 +1,6 @@
+development:
+  sessions:
+    default:
+      database: ewsapi
+      hosts:
+        - localhost:27017
