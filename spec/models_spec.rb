@@ -18,5 +18,6 @@ describe NotificationTicket do
     it { should respond_to(:requested_size) }
     it { should respond_to(:expires_at) }
     it { should respond_to(:created_at) }
+    it { should respond_to(:device_udid) }
   end
 end

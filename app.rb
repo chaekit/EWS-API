@@ -27,6 +27,10 @@ get '/labusage' do
   json :data => Lab.all
 end
 
+post '/ticket' do
+  json 200
+end
+
 public
 
 def parse_data

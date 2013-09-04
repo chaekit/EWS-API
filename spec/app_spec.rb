@@ -7,13 +7,9 @@ describe "App" do
   let(:app) { Sinatra::Application }
 
   context "endpoints" do
-    describe "/labusage" do
+    describe ":get/labusage" do
       before do
         get '/labusage'
-      end
-
-      it "should return 200" do
-        last_response.status == 200 
       end
 
       it "'s content type should be in json" do
@@ -21,9 +17,23 @@ describe "App" do
       end
 
       it "'s body should be a hash with root key being 'data'" do
-        JSON.parse(last_response.body)["data"].should be_a(Hash)
+        JSON.parse(last_response.body)["data"].should be_a(Array)
+      end
+    end
+
+    describe ":post/ticket" do
+      before do
+        post '/ticket',  "ticket" => { "requested_size" => 5 } 
+      end
+      
+      it "'s content type should be in json" do
+        last_response.headers["Content-Type"].should == "application/json;charset=utf-8"
       end
 
+      it "'s params should be hash with root key being ticket" do
+        last_request.params.has_key?("ticket").should be_true
+      end
+      
     end
   end
 

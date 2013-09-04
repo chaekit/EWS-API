@@ -18,4 +18,5 @@ class NotificationTicket
 
   field :requested_size, type: Integer
   field :expires_at, type: Time
+  field :device_udid, type: String
 end
