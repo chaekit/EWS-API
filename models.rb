@@ -5,8 +5,8 @@ class Lab
   embeds_many :notification_ticket
 
   field :labname, type: String
-  field :machine_count, type: Integer
-  field :inuse_count, type: Integer
+  field :machinecount, type: Integer
+  field :inusecount, type: Integer
 end
 
 

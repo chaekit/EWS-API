@@ -4,8 +4,8 @@ require_relative '../models'
 describe Lab do
   context "valid properties" do
     it { should respond_to(:labname) }
-    it { should respond_to(:machine_count) }
-    it { should respond_to(:inuse_count) }
+    it { should respond_to(:machinecount) }
+    it { should respond_to(:inusecount) }
   end
 
   context "embedded documents" do

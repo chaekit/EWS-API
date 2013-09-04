@@ -2,6 +2,7 @@ require 'sinatra'
 require 'sinatra/json'
 require 'httparty'
 require 'mongoid'
+require_relative './models'
 
 Mongoid.load!('./mongoid.yml', :development)
 
@@ -23,7 +24,7 @@ EWS_LABS = {
 }
 
 get '/labusage' do
-  json :data => usage_hash
+  json :data => Lab.all
 end
 
 public
