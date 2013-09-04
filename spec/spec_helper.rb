@@ -4,11 +4,14 @@
 # loaded once.
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
-#
+
+# helper libraries
 require 'webmock/rspec'
 require 'rack/test'
 require 'mongoid-rspec'
+require 'factory_girl'
 
+Dir[File.dirname(__FILE__) + "./factories/*.rb"].each { |f| require f }
 
 RSpec.configure do |config|
   config.treat_symbols_as_metadata_keys_with_true_values = true
