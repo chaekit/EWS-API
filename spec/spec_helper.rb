@@ -11,6 +11,8 @@ require 'rack/test'
 require 'mongoid-rspec'
 require 'factory_girl'
 
+Mongoid.load!('./mongoid.yml', :development)
+
 FactoryGirl.find_definitions
 
 RSpec.configure do |config|
