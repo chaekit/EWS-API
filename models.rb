@@ -21,4 +21,12 @@ class NotificationTicket
   field :requested_size, type: Integer
   field :expires_at, type: Time
   field :device_udid, type: String
+
+  def message_for_expired
+    "#{lab.labname} is still busy!"    
+  end
+
+  def message_for_open
+    "#{lab.labname} now has #{requested_size}+ open stations"
+  end
 end

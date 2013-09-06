@@ -8,6 +8,7 @@ GEM
       i18n (~> 0.6, >= 0.6.4)
       multi_json (~> 1.0)
     addressable (2.3.5)
+    apns (1.1.0)
     backports (3.3.3)
     builder (3.0.4)
     crack (0.4.1)
@@ -71,6 +72,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  apns
   eventmachine
   factory_girl
   httparty
