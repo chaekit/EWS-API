@@ -1,7 +1,9 @@
 require 'httparty'
 require_relative './models'
 
-Mongoid.load!('mongoid.yml', :development)
+DIR_PATH = File.expand_path(File.dirname(__FILE__))
+
+Mongoid.load!("#{DIR_PATH}/mongoid.yml", :development)
 
 module Poller
   EWS_URL = "https://my.engr.illinois.edu/labtrack/util_data_json.asp?callback="
@@ -27,3 +29,6 @@ module Poller
   end
 end
 
+if __FILE__ == $0
+  # Poller.poll_usage
+end
