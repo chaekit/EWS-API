@@ -6,10 +6,11 @@ describe Lab do
     it { should respond_to(:labname) }
     it { should respond_to(:machinecount) }
     it { should respond_to(:inusecount) }
+    it { should respond_to(:notification_tickets) }
   end
 
   context "embedded documents" do
-    it { should embed_many(:notification_ticket) }
+    it { should embed_many(:notification_tickets) }
   end
 end
 

@@ -2,7 +2,8 @@ require 'mongoid'
 
 class Lab
   include Mongoid::Document
-  embeds_many :notification_ticket
+  store_in collection: "labs"
+  embeds_many :notification_tickets
 
   field :labname, type: String
   field :machinecount, type: Integer
@@ -14,6 +15,7 @@ class NotificationTicket
   include Mongoid::Document
   include Mongoid::Timestamps
 
+  store_in collection: "labs"
   embedded_in :lab
 
   field :requested_size, type: Integer
