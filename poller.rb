@@ -3,7 +3,7 @@ require_relative './models'
 
 DIR_PATH = File.expand_path(File.dirname(__FILE__))
 
-Mongoid.load!("#{DIR_PATH}/mongoid.yml", :development)
+Mongoid.load!("#{DIR_PATH}/mongoid.yml", ENV['MONGO_ENV'])
 
 module Poller
   EWS_URL = "https://my.engr.illinois.edu/labtrack/util_data_json.asp?callback="

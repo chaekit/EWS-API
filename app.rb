@@ -4,7 +4,7 @@ require 'httparty'
 require 'mongoid'
 require_relative './models'
 
-Mongoid.load!('./mongoid.yml', :development)
+Mongoid.load!('./mongoid.yml', ENV['MONGO_ENV'])
 
 get '/labusage' do
   json :data => Lab.all
