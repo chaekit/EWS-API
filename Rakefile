@@ -1,6 +1,7 @@
 require_relative './poller'
 require_relative './models'
 require 'mongoid'
+require 'apns'
 
 Mongoid.load!("./mongoid.yml", ENV['MONGO_ENV'])
 

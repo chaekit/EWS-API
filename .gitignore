@@ -1,1 +1,5 @@
 cron.log
+bin/
+*.pem
+*.txt
+*.DS_Store

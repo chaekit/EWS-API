@@ -27,7 +27,8 @@ describe "App" do
         Lab.where(labname: attributes["labname"]).
           stub(last: FactoryGirl.create(:lab))
         
-        post '/ticket',  "ticket" => { "requested_size" => 5, "labname" => "DCL 416" } 
+        post '/ticket',  "ticket" => { "requested_size" => 5, "labname" => "DCL 416", 
+                                        "device_token" => "abcdef", "expires_at" => 123456} 
       end
       
       it "'s content type should be in json" do
@@ -48,7 +49,5 @@ describe "App" do
       end
       
     end
-
   end
-
 end
