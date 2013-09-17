@@ -22,6 +22,12 @@ class Lab
   def open_lab_size
     machinecount - inusecount
   end
+
+  class << self
+    def process_all_tickets
+      self.each { |lab| lab.process_tickets }
+    end
+  end
 end
 
 

@@ -12,6 +12,15 @@ describe Lab do
   context "embedded documents" do
     it { should embed_many(:notification_tickets) }
   end
+  context "class methods" do
+    describe ".process_all_tickets" do
+      it "should query al Labs first" do
+        Lab.stub(:each)   
+        Lab.should_receive(:each).once
+        Lab.process_all_tickets
+      end
+    end
+  end
 
   context "instance methods" do
     describe "#process_tickets" do
