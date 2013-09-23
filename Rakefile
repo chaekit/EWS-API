@@ -9,6 +9,10 @@ task :poll_usage do
   Poller.poll_usage
 end
 
+task :process_tickets => [:poll_usage] do
+  Lab.process_all_tickets
+end
+
 task :insert_default_usage do
   Lab.create!([{"labname"=> "DCL L416","inusecount"=> 0,"machinecount"=> 26},
     {"labname"=> "DCL L440","inusecount"=> 1,"machinecount"=> 30},

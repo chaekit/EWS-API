@@ -21,13 +21,13 @@ describe "App" do
       end
     end
 
-    describe ":post/ticket" do
-      before(:all) do
+    describe ":post/ticket/create" do
+      before do
         attributes = FactoryGirl.attributes_for(:lab)
         Lab.where(labname: attributes["labname"]).
           stub(last: FactoryGirl.create(:lab))
         
-        post '/ticket',  "ticket" => { "requested_size" => 5, "labname" => "DCL 416", 
+        post '/ticket/create',  "ticket" => { "requested_size" => 5, "labname" => "DCL 416", 
                                         "device_token" => "abcdef", "expires_at" => 123456} 
       end
       
@@ -47,7 +47,24 @@ describe "App" do
       after(:all) do
         @lab = nil
       end
+    end
+
+    describe ":post/ticket/delete" do
+      before do
+        @lab = FactoryGirl.create(:lab)        
+        @lab.update_attributes(notification_tickets: [FactoryGirl.create(:ticket_with_closed_lab)])
+        Lab.where(labname: "DCL 416").
+          stub(last: @lab)
+       
+        post '/ticket/delete',  "ticket" => {  
+                                  "labname" => "DCL 416",
+                                  "device_token" => "abcdefghijklmnopqrstuvwxyz", 
+                                }
+      end
       
+      it "should delete the corresponding ticket" do
+        Lab.where(labname: "DCL 416").last.notification_tickets.should be_empty
+      end
     end
   end
 end

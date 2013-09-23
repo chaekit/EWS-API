@@ -14,11 +14,17 @@ describe Lab do
   end
   context "class methods" do
     describe ".process_all_tickets" do
+      before do
+        Lab.destroy_all
+        @labs = FactoryGirl.create_list(:lab, 3)
+      end
+
       it "should query al Labs first" do
         Lab.stub(:each)   
         Lab.should_receive(:each).once
         Lab.process_all_tickets
       end
+
     end
   end
 

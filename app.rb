@@ -13,14 +13,9 @@ get '/labusage' do
   json :data => Lab.all
 end
 
-post '/ticket' do
-  #puts request.env["rack.input"].read
-  puts params
+post '/ticket/create' do
+  # puts params
   ticket_param = params["ticket"]
-  puts ticket_param["labname"]
-  puts ticket_param["expires_at"]
-  puts ticket_param["device_token"]
-  puts ticket_param["requested_size"]
   lab = Lab.where(labname: ticket_param["labname"]).last
   expires_at_epoch = Integer(ticket_param["expires_at"])
   device_token = ticket_param["device_token"]
@@ -31,4 +26,14 @@ post '/ticket' do
                              device_token: device_token,
                              lab: lab})
   json 200
+end
+
+post '/ticket/delete' do
+  ticket_param = params["ticket"]
+  labname = ticket_param["labname"]
+  device_token = ticket_param["device_token"]
+
+  lab = Lab.where(labname: labname).last
+  ticket = lab.notification_tickets.select { |t| t.device_token == device_token }.first
+  ticket.destroy
 end
